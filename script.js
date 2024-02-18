@@ -14,18 +14,33 @@ for (let seat of seats) {
         bookedSeat.innerText = e.target.innerText;
 
         seatCliked.push(bookedSeat)
-        console.log(bookedSeat.innerText);
-        console.log(seatCliked);
+
+
         if (seatCliked.length <= 4) {
             e.target.style.backgroundColor = '#1DD100';
-            e.target.style.color = 'white'
+            e.target.style.color = 'white';
+
+            //coupone 
+            const couponBtn = document.getElementById('coupon-btn');
+            if (seatCliked.length === 4) {
+
+                couponBtn.removeAttribute('disabled')
+            } else {
+
+                couponBtn.setAttribute('disabled', true)
+            }
+
+
+
+
+
             // calculate the total seats 
             const currentSeatElement = document.getElementById('total-seats');
             const currentSeatText = currentSeatElement.innerText;
             const currentSeat = parseInt(currentSeatText);
             const newTotalSeat = currentSeat - 1;
             currentSeatElement.innerText = newTotalSeat;
-            console.log(newTotalSeat);
+            // console.log(newTotalSeat);
 
 
 
@@ -37,7 +52,7 @@ for (let seat of seats) {
             const bookedSeatContainer = document.getElementById('seat-name');
 
             bookedSeatContainer.appendChild(bookedSeat);
-            console.log(bookedSeat);
+            // console.log(bookedSeat.innerText);
             //create the class of the seat 
 
             const seatClass = document.createElement('p');
@@ -93,6 +108,18 @@ for (let seat of seats) {
     })
 }
 
+const phone = document.getElementById('phone');
+phone.addEventListener('keyup', function (e) {
+    const phoneNumber = parseInt(e.target.value);
+    const nextBtn = document.getElementById('next-btn');
+    if (typeof phoneNumber === 'number' && seatCliked.length > 0) {
+        nextBtn.removeAttribute('disabled')
+    }
+    else {
+        nextBtn.setAttribute('disabled', true)
+    }
+    console.log(phoneNumber);
+})
 
 //coupon button 
 
@@ -119,7 +146,7 @@ couponButton.addEventListener('click', function () {
         couponInput.value = '';
         couponeInputField.style.display = 'none';
     }
-    else if (couponCode === 'Couple20') {
+    else if (couponCode === 'Couple 20') {
         const discountElement = document.getElementById('grand-total');
         const discountElementText = discountElement.innerText;
         const priceBeforeDiscount = parseInt(discountElementText);
