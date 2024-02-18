@@ -293,7 +293,7 @@
                         </div>
                         <div class="total-price-section font-bold flex justify-between">
                             <p>Grand Total </p>
-                            <p>BDT <span>1100</span></p>
+                            <p>BDT <span id="grand-total">0</span></p>
                         </div>
 
 
@@ -312,7 +312,7 @@
                             <div class="label font-bold">
                                 <span class="label-text">Phone Number</span>
                             </div>
-                            <input type="text" placeholder="Phone Number"
+                            <input type="number" placeholder="Phone Number"
                                 class="input input-bordered w-full max-w-xs" />
                         </label>
                         <label class="form-control w-full max-w-xs">
@@ -321,8 +321,29 @@
                             </div>
                             <input type="text" placeholder="Email" class="input input-bordered w-full max-w-xs" />
                         </label>
-                        <button
-                            class="btn mt-4 text-white bg-[#1DD100] w-full sm:btn-sm md:btn-md lg:btn-lg">Next</button>
+
+
+                        <!-- modal button  -->
+                        <button class="btn mt-4 text-white bg-[#1DD100] w-full sm:btn-sm md:btn-md lg:btn-lg"
+                            onclick="my_modal_5.showModal()">Next</button>
+                        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                            <div class="modal-box">
+                                <div class="flex flex-col justify-center items-center">
+                                    <img src="images/success.png" alt="">
+                                    <h1 class="text-green-600">Success</h1>
+                                    <p>Thanks for booking our bus seats</p>
+
+                                    <p>we are working hard to find the best service and deals for you</p>
+                                </div>
+
+                                <div class="modal-action">
+                                    <form method="dialog">
+                                        <!-- if there is a button in form, it will close the modal -->
+                                        <button class="btn">Close</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </dialog>
                     </div>
                 </div>
 
