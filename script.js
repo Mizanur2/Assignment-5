@@ -19,7 +19,7 @@ for (let seat of seats) {
         if (seatCliked.length <= 4) {
             e.target.style.backgroundColor = '#1DD100';
             e.target.style.color = 'white';
-
+            e.target.setAttribute('disabled', true)
             //coupone 
             const couponBtn = document.getElementById('coupon-btn');
             if (seatCliked.length === 4) {
@@ -112,13 +112,12 @@ const phone = document.getElementById('phone');
 phone.addEventListener('keyup', function (e) {
     const phoneNumber = parseInt(e.target.value);
     const nextBtn = document.getElementById('next-btn');
-    if (typeof phoneNumber === 'number' && seatCliked.length > 0) {
+    if (phoneNumber !== ' ' && seatCliked.length > 0) {
         nextBtn.removeAttribute('disabled')
     }
     else {
         nextBtn.setAttribute('disabled', true)
     }
-    console.log(phoneNumber);
 })
 
 //coupon button 
@@ -133,7 +132,7 @@ couponButton.addEventListener('click', function () {
     const couponInput = document.getElementById('coupon-input');
     const couponCode = couponInput.value;
 
-    if (couponCode === 'New15') {
+    if (couponCode === 'NEW15') {
 
         const discountElement = document.getElementById('grand-total');
         const discountElementText = discountElement.innerText;
@@ -142,6 +141,11 @@ couponButton.addEventListener('click', function () {
         const finalPrice = priceBeforeDiscount - discount;
         console.log(finalPrice);
         discountElement.innerText = finalPrice;
+
+        //discount amount 
+        const totalDiscountElement = document.getElementById('discount-total');
+        // const totalDiscounText =totalDiscountElement.innerText;
+        totalDiscountElement.innerText = discount;
 
         couponInput.value = '';
         couponeInputField.style.display = 'none';
