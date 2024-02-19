@@ -100,7 +100,7 @@ for (let seat of seats) {
 
         }
         else {
-            alert("you can't select more")
+            alert("You can't select more")
             return
 
         }
@@ -111,8 +111,9 @@ for (let seat of seats) {
 const phone = document.getElementById('phone');
 phone.addEventListener('keyup', function (e) {
     const phoneNumber = parseInt(e.target.value);
+    console.log(phoneNumber);
     const nextBtn = document.getElementById('next-btn');
-    if (phoneNumber !== ' ' && seatCliked.length > 0) {
+    if (seatCliked.length > 0) {
         nextBtn.removeAttribute('disabled')
     }
     else {
@@ -146,6 +147,7 @@ couponButton.addEventListener('click', function () {
         const totalDiscountElement = document.getElementById('discount-total');
         // const totalDiscounText =totalDiscountElement.innerText;
         totalDiscountElement.innerText = discount;
+        document.getElementById('discount-div').classList.remove('hidden')
 
         couponInput.value = '';
         couponeInputField.style.display = 'none';
@@ -158,6 +160,12 @@ couponButton.addEventListener('click', function () {
         const finalPrice = priceBeforeDiscount - discount;
         console.log(finalPrice);
         discountElement.innerText = finalPrice;
+
+        const totalDiscountElement = document.getElementById('discount-total');
+        // const totalDiscounText =totalDiscountElement.innerText;
+        totalDiscountElement.innerText = discount;
+
+        document.getElementById('discount-div').classList.remove('hidden')
 
         couponInput.value = '';
         couponeInputField.style.display = 'none';
